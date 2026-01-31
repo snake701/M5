@@ -31,6 +31,7 @@
                     boxShadow: {
                         'paper': '0 10px 40px -6px rgba(51, 65, 85, 0.08)',
                         'glow': '0 0 15px rgba(208, 134, 134, 0.15)',
+                        'card': '0 4px 15px -2px rgba(0, 0, 0, 0.05)',
                     }
                 }
             }
@@ -163,28 +164,30 @@
                     </div>
                 </div>
 
-                <!-- 03. 服務專區 (並排等大設計) -->
+                <!-- 03. 服務專區 (平衡並排設計) -->
                 <div class="grid grid-cols-2 gap-3 mt-4">
                     
                     <!-- 卡片 1: 客製化訂製 (粉色系) -->
-                    <div class="group cursor-pointer border border-wood-accent/20 bg-white/50 hover:bg-white hover:border-wood-accent/50 hover:shadow-sm p-3 rounded-sm transition-all duration-300 flex flex-col justify-center">
-                        <div class="flex items-center gap-2 mb-1.5 text-wood-accent">
+                    <div class="group cursor-pointer border border-wood-accent/20 bg-white/50 hover:bg-white hover:border-wood-accent/50 hover:shadow-card p-3 rounded-sm transition-all duration-300 flex flex-col justify-center relative overflow-hidden">
+                        <div class="absolute right-0 top-0 w-8 h-8 bg-wood-accent/5 rounded-bl-full transition-transform group-hover:scale-150"></div>
+                        <div class="flex items-center gap-2 mb-1.5 text-wood-accent relative z-10">
                             <i data-lucide="sparkles" class="w-3.5 h-3.5 group-hover:rotate-12 transition-transform"></i>
                             <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-accent transition-colors">客製化訂製</h5>
                         </div>
-                        <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90">
+                        <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90 relative z-10">
                             量身打造專屬色系與款式<br>
                             歡迎私訊討論
                         </p>
                     </div>
 
                     <!-- 卡片 2: 合作邀約 (綠色系) -->
-                    <div class="group cursor-pointer border border-wood-moss/20 bg-white/50 hover:bg-white hover:border-wood-moss/50 hover:shadow-sm p-3 rounded-sm transition-all duration-300 flex flex-col justify-center">
-                        <div class="flex items-center gap-2 mb-1.5 text-wood-moss">
+                    <div class="group cursor-pointer border border-wood-moss/20 bg-white/50 hover:bg-white hover:border-wood-moss/50 hover:shadow-card p-3 rounded-sm transition-all duration-300 flex flex-col justify-center relative overflow-hidden">
+                        <div class="absolute right-0 top-0 w-8 h-8 bg-wood-moss/5 rounded-bl-full transition-transform group-hover:scale-150"></div>
+                        <div class="flex items-center gap-2 mb-1.5 text-wood-moss relative z-10">
                             <i data-lucide="mail-open" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
                             <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-moss transition-colors">合作邀約</h5>
                         </div>
-                        <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90">
+                        <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90 relative z-10">
                             歡迎商業合作與寄售<br>
                             請聯繫我們
                         </p>
@@ -194,7 +197,7 @@
 
             </section>
 
-            <!-- 04. 精選作品 (點擊燈箱) -->
+            <!-- 04. 精選作品 (2大4小佈局) -->
             <section class="w-full mt-auto pt-5 border-t border-wood-line/30">
                 <div class="flex items-center gap-3 mb-3 justify-center opacity-80">
                     <div class="h-[1px] w-8 bg-wood-line"></div>
@@ -202,19 +205,37 @@
                     <div class="h-[1px] w-8 bg-wood-line"></div>
                 </div>
                 
-                <div class="grid grid-cols-4 md:grid-cols-4 gap-2">
-                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                <!-- 使用 grid-cols-4 來控制 -->
+                <div class="grid grid-cols-4 gap-2">
+                    
+                    <!-- 第一排：2 張大圖 (每張佔 2 格) -->
+                    <div class="col-span-2 aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                        <div class="absolute top-2 right-2 z-10 bg-wood-accent/90 text-white text-[9px] px-1.5 py-0.5 rounded-[1px] tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">Main</div>
                         <img src="product_01.png" onerror="this.src='https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
-                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+
+                    <div class="col-span-2 aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                         <div class="absolute top-2 right-2 z-10 bg-wood-accent/90 text-white text-[9px] px-1.5 py-0.5 rounded-[1px] tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">Main</div>
                         <img src="product_02.png" onerror="this.src='https://images.unsplash.com/photo-1630019852942-e5b1216f3165?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
-                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
-                        <img src="product_03.png" onerror="this.src='https://images.unsplash.com/photo-1602751584552-8ba420552259?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
+
+                    <!-- 第二排：4 張小圖 (每張佔 1 格) -->
+                    <div class="col-span-1 aspect-square bg-white p-1 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                        <img src="product_03.png" onerror="this.src='https://images.unsplash.com/photo-1602751584552-8ba420552259?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
-                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
-                        <img src="product_04.png" onerror="this.src='https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
+
+                    <div class="col-span-1 aspect-square bg-white p-1 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                        <img src="product_04.png" onerror="this.src='https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
+
+                    <div class="col-span-1 aspect-square bg-white p-1 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                        <img src="product_05.png" onerror="this.src='https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
+                    </div>
+
+                    <div class="col-span-1 aspect-square bg-white p-1 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                        <img src="product_06.png" onerror="this.src='https://images.unsplash.com/photo-1599643478518-17488fbbcd75?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
+                    </div>
+
                 </div>
             </section>
 
