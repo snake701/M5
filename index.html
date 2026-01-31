@@ -14,14 +14,14 @@
                     colors: {
                         wood: {
                             base: '#FFFFFF',    /* 純白 */
-                            dark: '#334155',    /* 鐵灰色 (Slate-700) */
-                            medium: '#64748B',  /* 灰藍色 (Slate-500) */
-                            accent: '#D08686',  /* 乾燥玫瑰粉 (Dusty Rose) */
+                            dark: '#334155',    /* 鐵灰色 */
+                            medium: '#64748B',  /* 灰藍色 */
+                            accent: '#D08686',  /* 乾燥玫瑰粉 */
                             moss: '#7D9D9C',    /* 莫蘭迪青瓷色 */
                             line: '#E2E8F0',    /* 冷灰線條 */
                             bg: '#F1F5F9',      /* 晨霧灰 */
                             hover: '#F8FAFC',   /* 懸停背景 */
-                            card: '#FDFBFB'     /* 微暖白 (區塊背景) */
+                            card: '#FDFBFB'     /* 微暖白 */
                         }
                     },
                     fontFamily: {
@@ -44,7 +44,6 @@
                 radial-gradient(circle at 90% 80%, rgba(208, 134, 134, 0.06) 0%, transparent 40%);
         }
         
-        /* 花朵動畫維持不變 */
         .flower { position: absolute; pointer-events: none; z-index: 50; top: -10vh; }
         @keyframes fall-1 { 0% { transform: translate(0, 0) rotate(0deg); opacity: 0; } 10% { opacity: var(--opacity-val); } 90% { opacity: var(--opacity-val); } 100% { transform: translate(10vw, 110vh) rotate(360deg); opacity: 0; } }
         @keyframes fall-2 { 0% { transform: translate(0, 0) rotate(0deg); opacity: 0; } 10% { opacity: var(--opacity-val); } 90% { opacity: var(--opacity-val); } 100% { transform: translate(-10vw, 110vh) rotate(-180deg); opacity: 0; } }
@@ -60,6 +59,15 @@
 
         @keyframes sway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
         .animate-sway { animation: sway 6s ease-in-out infinite; transform-origin: center center; }
+
+        /* 燈箱過渡動畫 */
+        #lightbox { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #lightbox.hidden-box { opacity: 0; visibility: hidden; pointer-events: none; }
+        #lightbox.visible-box { opacity: 1; visibility: visible; pointer-events: auto; }
+        
+        #lightbox-img-container { transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        #lightbox.hidden-box #lightbox-img-container { transform: scale(0.9); }
+        #lightbox.visible-box #lightbox-img-container { transform: scale(1); }
     </style>
 </head>
 <body class="text-wood-dark min-h-screen flex flex-col items-center justify-center py-4 md:py-8 px-2 md:px-4 font-serif relative overflow-x-hidden selection:bg-wood-accent selection:text-white">
@@ -74,9 +82,8 @@
         <div class="absolute bottom-4 left-4 w-8 h-8 border-b border-l border-wood-medium/20"></div>
         <div class="absolute bottom-4 right-4 w-8 h-8 border-b border-r border-wood-medium/20"></div>
 
-        <!-- 左側區塊：品牌形象 (固定寬度，確保照片不變形) -->
+        <!-- 左側區塊：品牌形象 -->
         <div class="flex flex-col items-center md:w-[38%] md:border-r md:border-wood-line md:pr-10 md:h-auto shrink-0 relative">
-            <!-- 讓左側內容在電腦版置中偏上 -->
             <div class="md:sticky md:top-10 flex flex-col items-center w-full">
                 <header class="flex flex-col items-center mb-6 md:mb-0 relative">
                     <div class="relative mb-5">
@@ -110,12 +117,12 @@
             </div>
         </div>
 
-        <!-- 右側區塊：資訊內容 (比例優化) -->
+        <!-- 右側區塊：資訊內容 -->
         <div class="flex flex-col md:w-[62%] w-full md:pl-2 pt-6 md:pt-0">
             
-            <section class="text-center md:text-left space-y-6"> <!-- 減少垂直間距 -->
+            <section class="text-center md:text-left space-y-6">
                 
-                <!-- 01. 品牌故事 & 設計理念整合 -->
+                <!-- 01. 品牌故事 & 設計理念 -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-3 mb-2 justify-center md:justify-start">
                         <span class="text-[10px] tracking-[0.2em] text-wood-accent font-bold uppercase border-b border-wood-accent/30 pb-0.5">Brand Story</span>
@@ -133,10 +140,9 @@
                     </div>
                 </div>
 
-                <!-- 02. 特點與品項 (更緊湊的排版) -->
+                <!-- 02. 特點與品項 -->
                 <div class="pt-4 border-t border-wood-line/60 border-dashed">
                     <div class="flex flex-col md:flex-row gap-4 md:gap-8">
-                        <!-- Features -->
                         <div class="flex-1">
                             <span class="block text-[10px] text-wood-medium font-bold tracking-widest mb-2">FEATURES</span>
                             <div class="flex flex-wrap gap-1.5 justify-center md:justify-start">
@@ -145,7 +151,6 @@
                                 <span class="px-2 py-0.5 bg-wood-moss/5 border border-wood-moss/20 text-wood-dark text-[10px] font-medium rounded-[2px]">#日式手作</span>
                             </div>
                         </div>
-                        <!-- Items -->
                         <div class="flex-1">
                             <span class="block text-[10px] text-wood-medium font-bold tracking-widest mb-2">ITEMS</span>
                             <ul class="flex flex-wrap gap-x-3 gap-y-1 justify-center md:justify-start text-[11px] text-wood-dark font-medium list-none">
@@ -158,16 +163,13 @@
                     </div>
                 </div>
 
-                <!-- 03. 服務專區：客製化 & 合作邀約 (調整為上下並列的卡片結構) -->
+                <!-- 03. 服務專區 -->
                 <div class="flex flex-col gap-2 mt-2">
-                    
-                    <!-- A. 客製化服務 (主要視覺) -->
+                    <!-- 客製化服務 -->
                     <div class="relative group cursor-pointer bg-wood-card border border-wood-accent/20 p-3 rounded-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md hover:bg-white flex items-center gap-3">
-                        <!-- Icon -->
                         <div class="shrink-0 w-8 h-8 rounded-full bg-wood-accent/10 flex items-center justify-center text-wood-accent group-hover:scale-110 transition-transform">
                             <i data-lucide="sparkles" class="w-4 h-4"></i>
                         </div>
-                        <!-- Text -->
                         <div class="flex-1 text-center md:text-left">
                             <div class="flex items-center justify-center md:justify-between">
                                 <h5 class="text-[11px] font-bold text-wood-dark tracking-wider">BESPOKE SERVICE</h5>
@@ -177,17 +179,15 @@
                         </div>
                     </div>
 
-                    <!-- B. 合作邀約 (次要視覺，保留明顯度) -->
+                    <!-- 合作邀約 -->
                     <div class="group cursor-pointer bg-wood-line/20 border border-transparent p-2.5 rounded-sm transition-all hover:bg-wood-moss/10 hover:border-wood-moss/20 flex items-center justify-center md:justify-start gap-2">
                         <i data-lucide="handshake" class="w-3.5 h-3.5 text-wood-medium group-hover:text-wood-moss transition-colors"></i>
                         <span class="text-[11px] text-wood-dark/80 font-medium tracking-wide group-hover:text-wood-dark">歡迎商業合作邀約，請私訊或信箱聯繫</span>
                     </div>
-
                 </div>
-
             </section>
 
-            <!-- 04. 精選作品 (比例調整：稍微縮小留白，讓圖更大) -->
+            <!-- 04. 精選作品 (加入點擊放大功能) -->
             <section class="w-full mt-auto pt-5 border-t border-wood-line/30">
                 <div class="flex items-center gap-3 mb-3 justify-center opacity-80">
                     <div class="h-[1px] w-8 bg-wood-line"></div>
@@ -195,18 +195,19 @@
                     <div class="h-[1px] w-8 bg-wood-line"></div>
                 </div>
                 
-                <div class="grid grid-cols-4 md:grid-cols-4 gap-2"> <!-- 改為4列，讓圖片變小巧精緻，整體高度縮減 -->
-                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-pointer hover:border-wood-accent/30">
-                        <img src="product_01.png" onerror="this.src='https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=300&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="grid grid-cols-4 md:grid-cols-4 gap-2">
+                    <!-- Images with onclick event -->
+                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                        <img src="product_01.png" onerror="this.src='https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
-                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-pointer hover:border-wood-accent/30">
-                        <img src="product_02.png" onerror="this.src='https://images.unsplash.com/photo-1630019852942-e5b1216f3165?q=80&w=300&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                        <img src="product_02.png" onerror="this.src='https://images.unsplash.com/photo-1630019852942-e5b1216f3165?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
-                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-pointer hover:border-wood-accent/30">
-                        <img src="product_03.png" onerror="this.src='https://images.unsplash.com/photo-1602751584552-8ba420552259?q=80&w=300&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                        <img src="product_03.png" onerror="this.src='https://images.unsplash.com/photo-1602751584552-8ba420552259?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
-                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-pointer hover:border-wood-accent/30">
-                        <img src="product_04.png" onerror="this.src='https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?q=80&w=300&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
+                        <img src="product_04.png" onerror="this.src='https://images.unsplash.com/photo-1596944924616-7b38e7cfac36?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
                 </div>
             </section>
@@ -216,14 +217,28 @@
                 <p class="text-[9px] text-wood-medium/50 tracking-[0.2em] font-sans">© 2024 Mei Yang</p>
             </footer>
         </div>
-
     </main>
+
+    <!-- 燈箱 (Lightbox) 結構 -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-wood-dark/70 backdrop-blur-sm hidden-box flex items-center justify-center p-4" onclick="closeLightbox()">
+        <div id="lightbox-img-container" class="relative max-w-2xl w-full max-h-[90vh] flex justify-center" onclick="event.stopPropagation()">
+            <!-- 照片外框 (白色邊框 + 陰影) -->
+            <div class="bg-white p-2 md:p-3 shadow-2xl rounded-sm inline-block relative">
+                <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] w-auto h-auto object-contain block rounded-[1px]">
+                
+                <!-- 關閉按鈕 -->
+                <button onclick="closeLightbox()" class="absolute -top-12 right-0 md:-right-12 md:top-0 p-2 text-white/80 hover:text-white hover:scale-110 transition-all">
+                    <i data-lucide="x" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
         lucide.createIcons();
         function createFlowers() {
             const container = document.getElementById('flower-container');
-            const flowerCount = 10; // 稍微減少花朵數量，保持畫面乾淨
+            const flowerCount = 10;
             const flowerSVG = `<svg viewBox="0 0 100 100" fill="currentColor" class="w-full h-full"><path d="M50 50 C40 80 10 70 20 50 C10 30 40 20 50 50 C60 20 90 30 80 50 C90 70 60 80 50 50 Z" opacity="0.9"/><path d="M50 50 Q30 10 50 0 Q70 10 50 50 Q90 30 100 50 Q90 70 50 50 Q70 90 50 100 Q30 90 50 50 Q10 70 0 50 Q10 30 50 50 Z" /></svg>`;
             for (let i = 0; i < flowerCount; i++) {
                 const flower = document.createElement('div');
@@ -246,6 +261,34 @@
             }
         }
         createFlowers();
+
+        // 燈箱控制邏輯
+        function openLightbox(element) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            // 獲取點擊區塊內的 img src
+            // 這裡我們取 onerror 的 URL 作為示範，實際運作會取 src
+            const imgElement = element.querySelector('img');
+            lightboxImg.src = imgElement.src;
+
+            // 顯示燈箱
+            lightbox.classList.remove('hidden-box');
+            lightbox.classList.add('visible-box');
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('visible-box');
+            lightbox.classList.add('hidden-box');
+        }
+
+        // 按 ESC 鍵也可以關閉
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
     </script>
 </body>
 </html>
