@@ -60,7 +60,7 @@
         @keyframes sway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
         .animate-sway { animation: sway 6s ease-in-out infinite; transform-origin: center center; }
 
-        /* 燈箱過渡動畫 */
+        /* 燈箱樣式 */
         #lightbox { transition: opacity 0.3s ease, visibility 0.3s ease; }
         #lightbox.hidden-box { opacity: 0; visibility: hidden; pointer-events: none; }
         #lightbox.visible-box { opacity: 1; visibility: visible; pointer-events: auto; }
@@ -163,31 +163,38 @@
                     </div>
                 </div>
 
-                <!-- 03. 服務專區 -->
-                <div class="flex flex-col gap-2 mt-2">
-                    <!-- 客製化服務 -->
-                    <div class="relative group cursor-pointer bg-wood-card border border-wood-accent/20 p-3 rounded-sm transition-all duration-300 hover:border-wood-accent/50 hover:shadow-md hover:bg-white flex items-center gap-3">
-                        <div class="shrink-0 w-8 h-8 rounded-full bg-wood-accent/10 flex items-center justify-center text-wood-accent group-hover:scale-110 transition-transform">
-                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <!-- 03. 服務專區 (並排等大設計) -->
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    
+                    <!-- 卡片 1: 客製化訂製 (粉色系) -->
+                    <div class="group cursor-pointer border border-wood-accent/20 bg-white/50 hover:bg-white hover:border-wood-accent/50 hover:shadow-sm p-3 rounded-sm transition-all duration-300 flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-1.5 text-wood-accent">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 group-hover:rotate-12 transition-transform"></i>
+                            <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-accent transition-colors">客製化訂製</h5>
                         </div>
-                        <div class="flex-1 text-center md:text-left">
-                            <div class="flex items-center justify-center md:justify-between">
-                                <h5 class="text-[11px] font-bold text-wood-dark tracking-wider">BESPOKE SERVICE</h5>
-                                <span class="hidden md:inline-block text-[10px] text-wood-accent opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">私訊討論 <i data-lucide="arrow-right" class="inline w-3 h-3 mb-[1px]"></i></span>
-                            </div>
-                            <p class="text-[10px] text-wood-medium/80 mt-0.5">喜歡這款但想要不同色系？為您量身打造專屬飾品。</p>
-                        </div>
+                        <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90">
+                            量身打造專屬色系與款式<br>
+                            歡迎私訊討論
+                        </p>
                     </div>
 
-                    <!-- 合作邀約 -->
-                    <div class="group cursor-pointer bg-wood-line/20 border border-transparent p-2.5 rounded-sm transition-all hover:bg-wood-moss/10 hover:border-wood-moss/20 flex items-center justify-center md:justify-start gap-2">
-                        <i data-lucide="handshake" class="w-3.5 h-3.5 text-wood-medium group-hover:text-wood-moss transition-colors"></i>
-                        <span class="text-[11px] text-wood-dark/80 font-medium tracking-wide group-hover:text-wood-dark">歡迎商業合作邀約，請私訊或信箱聯繫</span>
+                    <!-- 卡片 2: 合作邀約 (綠色系) -->
+                    <div class="group cursor-pointer border border-wood-moss/20 bg-white/50 hover:bg-white hover:border-wood-moss/50 hover:shadow-sm p-3 rounded-sm transition-all duration-300 flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-1.5 text-wood-moss">
+                            <i data-lucide="mail-open" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
+                            <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-moss transition-colors">合作邀約</h5>
+                        </div>
+                        <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90">
+                            歡迎商業合作與寄售<br>
+                            請聯繫我們
+                        </p>
                     </div>
+
                 </div>
+
             </section>
 
-            <!-- 04. 精選作品 (加入點擊放大功能) -->
+            <!-- 04. 精選作品 (點擊燈箱) -->
             <section class="w-full mt-auto pt-5 border-t border-wood-line/30">
                 <div class="flex items-center gap-3 mb-3 justify-center opacity-80">
                     <div class="h-[1px] w-8 bg-wood-line"></div>
@@ -196,7 +203,6 @@
                 </div>
                 
                 <div class="grid grid-cols-4 md:grid-cols-4 gap-2">
-                    <!-- Images with onclick event -->
                     <div class="aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
                         <img src="product_01.png" onerror="this.src='https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
@@ -219,14 +225,11 @@
         </div>
     </main>
 
-    <!-- 燈箱 (Lightbox) 結構 -->
+    <!-- 燈箱 -->
     <div id="lightbox" class="fixed inset-0 z-[100] bg-wood-dark/70 backdrop-blur-sm hidden-box flex items-center justify-center p-4" onclick="closeLightbox()">
         <div id="lightbox-img-container" class="relative max-w-2xl w-full max-h-[90vh] flex justify-center" onclick="event.stopPropagation()">
-            <!-- 照片外框 (白色邊框 + 陰影) -->
             <div class="bg-white p-2 md:p-3 shadow-2xl rounded-sm inline-block relative">
                 <img id="lightbox-img" src="" class="max-w-full max-h-[80vh] w-auto h-auto object-contain block rounded-[1px]">
-                
-                <!-- 關閉按鈕 -->
                 <button onclick="closeLightbox()" class="absolute -top-12 right-0 md:-right-12 md:top-0 p-2 text-white/80 hover:text-white hover:scale-110 transition-all">
                     <i data-lucide="x" class="w-8 h-8"></i>
                 </button>
@@ -262,17 +265,11 @@
         }
         createFlowers();
 
-        // 燈箱控制邏輯
         function openLightbox(element) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
-            
-            // 獲取點擊區塊內的 img src
-            // 這裡我們取 onerror 的 URL 作為示範，實際運作會取 src
             const imgElement = element.querySelector('img');
             lightboxImg.src = imgElement.src;
-
-            // 顯示燈箱
             lightbox.classList.remove('hidden-box');
             lightbox.classList.add('visible-box');
         }
@@ -283,11 +280,8 @@
             lightbox.classList.add('hidden-box');
         }
 
-        // 按 ESC 鍵也可以關閉
         document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                closeLightbox();
-            }
+            if (event.key === "Escape") closeLightbox();
         });
     </script>
 </body>
