@@ -38,11 +38,11 @@
         }
     </script>
     <style>
-        /* --- 修正手機版左右晃動的關鍵 CSS --- */
+        /* --- 手機版防晃動 --- */
         html, body {
             width: 100%;
-            overflow-x: hidden; /* 強制隱藏水平超出部分 */
-            position: relative; /* 確保定位參考點正確 */
+            overflow-x: hidden;
+            position: relative;
         }
         
         body {
@@ -52,7 +52,6 @@
                 radial-gradient(circle at 90% 80%, rgba(208, 134, 134, 0.06) 0%, transparent 40%);
         }
         
-        /* 花朵動畫 */
         .flower { position: absolute; pointer-events: none; z-index: 50; top: -10vh; }
         @keyframes fall-1 { 0% { transform: translate(0, 0) rotate(0deg); opacity: 0; } 10% { opacity: var(--opacity-val); } 90% { opacity: var(--opacity-val); } 100% { transform: translate(10vw, 110vh) rotate(360deg); opacity: 0; } }
         @keyframes fall-2 { 0% { transform: translate(0, 0) rotate(0deg); opacity: 0; } 10% { opacity: var(--opacity-val); } 90% { opacity: var(--opacity-val); } 100% { transform: translate(-10vw, 110vh) rotate(-180deg); opacity: 0; } }
@@ -84,8 +83,7 @@
     <div id="flower-container" class="fixed inset-0 pointer-events-none z-50 overflow-hidden w-full h-full"></div>
 
     <main class="w-[96%] max-w-[540px] md:w-full md:max-w-4xl min-h-[85vh] md:min-h-[600px] md:h-auto bg-wood-base washi-card shadow-paper relative flex flex-col md:flex-row md:items-stretch md:gap-10 p-6 md:p-14 z-10 border border-wood-line transition-all duration-500 mx-auto rounded-sm md:rounded-none overflow-hidden md:overflow-visible">
-        <!-- 增加 overflow-hidden 到 main 容器 (手機版)，確保內容不溢出 -->
-
+        
         <!-- 角落裝飾 -->
         <div class="absolute top-4 left-4 w-8 h-8 border-t border-l border-wood-medium/20"></div>
         <div class="absolute top-4 right-4 w-8 h-8 border-t border-r border-wood-medium/20"></div>
@@ -116,10 +114,12 @@
                     <p class="text-[11px] md:text-xs text-wood-medium font-medium mt-2 tracking-[0.2em] uppercase font-sans text-center">Botanical & Accessory</p>
                     
                     <div class="flex items-center gap-3 mt-5 opacity-70">
+                        <!-- IG 連結 -->
                         <a href="https://www.instagram.com/meiyang.16888" target="_blank" class="p-2 border border-wood-medium/30 rounded-full hover:bg-wood-accent/20 hover:text-wood-accent transition-colors">
                             <i data-lucide="instagram" class="w-4 h-4"></i>
                         </a>
-                        <a href="#" class="p-2 border border-wood-medium/30 rounded-full hover:bg-wood-moss/20 hover:text-wood-moss transition-colors" title="Contact">
+                        <!-- Mail 連結 (左側小圖標也加上主旨) -->
+                        <a href="mailto:your-email@example.com?subject=合作邀約-（請填入邀約類型）" class="p-2 border border-wood-medium/30 rounded-full hover:bg-wood-moss/20 hover:text-wood-moss transition-colors" title="Contact">
                             <i data-lucide="mail" class="w-4 h-4"></i>
                         </a>
                     </div>
@@ -173,40 +173,44 @@
                     </div>
                 </div>
 
-                <!-- 03. 服務專區 (平衡並排設計) -->
+                <!-- 03. 服務專區 (可點擊按鈕設計) -->
                 <div class="grid grid-cols-2 gap-3 mt-4">
                     
-                    <!-- 卡片 1: 客製化訂製 (粉色系) -->
-                    <div class="group cursor-pointer border border-wood-accent/20 bg-white/50 hover:bg-white hover:border-wood-accent/50 hover:shadow-card p-3 rounded-sm transition-all duration-300 flex flex-col justify-center relative overflow-hidden">
+                    <!-- 按鈕 1: 客製化訂製 (連結到 Instagram) -->
+                    <a href="https://www.instagram.com/meiyang.16888" target="_blank" class="group block cursor-pointer border border-wood-accent/20 bg-white/50 hover:bg-white hover:border-wood-accent/50 hover:shadow-card p-3 rounded-sm transition-all duration-300 relative overflow-hidden text-center md:text-left">
                         <div class="absolute right-0 top-0 w-8 h-8 bg-wood-accent/5 rounded-bl-full transition-transform group-hover:scale-150"></div>
-                        <div class="flex items-center gap-2 mb-1.5 text-wood-accent relative z-10">
-                            <i data-lucide="sparkles" class="w-3.5 h-3.5 group-hover:rotate-12 transition-transform"></i>
-                            <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-accent transition-colors">客製化訂製</h5>
+                        <div class="flex flex-col items-center md:items-start justify-center h-full">
+                            <div class="flex items-center gap-2 mb-1.5 text-wood-accent relative z-10">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5 group-hover:rotate-12 transition-transform"></i>
+                                <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-accent transition-colors">客製化訂製</h5>
+                            </div>
+                            <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90 relative z-10">
+                                量身打造專屬色系與款式<br>
+                                <span class="underline decoration-wood-accent/30 underline-offset-2 mt-1 inline-block">前往 IG 私訊討論 <i data-lucide="arrow-up-right" class="inline w-2.5 h-2.5 mb-0.5"></i></span>
+                            </p>
                         </div>
-                        <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90 relative z-10">
-                            量身打造專屬色系與款式<br>
-                            歡迎私訊討論
-                        </p>
-                    </div>
+                    </a>
 
-                    <!-- 卡片 2: 合作邀約 (綠色系) -->
-                    <div class="group cursor-pointer border border-wood-moss/20 bg-white/50 hover:bg-white hover:border-wood-moss/50 hover:shadow-card p-3 rounded-sm transition-all duration-300 flex flex-col justify-center relative overflow-hidden">
+                    <!-- 按鈕 2: 合作邀約 (連結到 Email + 自動帶入主旨) -->
+                    <a href="mailto:your-email@example.com?subject=合作邀約-（請填入邀約類型）" class="group block cursor-pointer border border-wood-moss/20 bg-white/50 hover:bg-white hover:border-wood-moss/50 hover:shadow-card p-3 rounded-sm transition-all duration-300 relative overflow-hidden text-center md:text-left">
                         <div class="absolute right-0 top-0 w-8 h-8 bg-wood-moss/5 rounded-bl-full transition-transform group-hover:scale-150"></div>
-                        <div class="flex items-center gap-2 mb-1.5 text-wood-moss relative z-10">
-                            <i data-lucide="mail-open" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
-                            <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-moss transition-colors">合作邀約</h5>
+                        <div class="flex flex-col items-center md:items-start justify-center h-full">
+                            <div class="flex items-center gap-2 mb-1.5 text-wood-moss relative z-10">
+                                <i data-lucide="mail-open" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
+                                <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-moss transition-colors">合作邀約</h5>
+                            </div>
+                            <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90 relative z-10">
+                                歡迎商業合作與寄售<br>
+                                <span class="underline decoration-wood-moss/30 underline-offset-2 mt-1 inline-block">寫信聯繫我們 <i data-lucide="arrow-right" class="inline w-2.5 h-2.5 mb-0.5"></i></span>
+                            </p>
                         </div>
-                        <p class="text-[10px] text-wood-medium/80 leading-relaxed group-hover:text-wood-dark/90 relative z-10">
-                            歡迎商業合作與寄售<br>
-                            請聯繫我們
-                        </p>
-                    </div>
+                    </a>
 
                 </div>
 
             </section>
 
-            <!-- 04. 精選作品 (2大4小佈局) -->
+            <!-- 04. 精選作品 -->
             <section class="w-full mt-auto pt-5 border-t border-wood-line/30">
                 <div class="flex items-center gap-3 mb-2 justify-center opacity-80">
                     <div class="h-[1px] w-8 bg-wood-line"></div>
@@ -219,8 +223,7 @@
                 </p>
                 
                 <div class="grid grid-cols-4 gap-2">
-                    
-                    <!-- 第一排：2 張大圖 (每張佔 2 格) -->
+                    <!-- 第一排：2 張大圖 -->
                     <div class="col-span-2 aspect-square bg-white p-1.5 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
                         <div class="absolute top-2 right-2 z-10 bg-wood-accent/90 text-white text-[9px] px-1.5 py-0.5 rounded-[1px] tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">Main</div>
                         <img src="product_01.png" onerror="this.src='https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
@@ -231,7 +234,7 @@
                         <img src="product_02.png" onerror="this.src='https://images.unsplash.com/photo-1630019852942-e5b1216f3165?q=80&w=800&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
 
-                    <!-- 第二排：4 張小圖 (每張佔 1 格) -->
+                    <!-- 第二排：4 張小圖 -->
                     <div class="col-span-1 aspect-square bg-white p-1 shadow-sm border border-wood-line/50 rounded-sm group overflow-hidden relative cursor-zoom-in hover:border-wood-accent/30 transition-colors" onclick="openLightbox(this)">
                         <img src="product_03.png" onerror="this.src='https://images.unsplash.com/photo-1602751584552-8ba420552259?q=80&w=600&auto=format&fit=crop'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 pointer-events-none">
                     </div>
