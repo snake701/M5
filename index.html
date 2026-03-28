@@ -118,20 +118,13 @@
                         </h1>
                         <p class="text-[11px] md:text-xs text-wood-medium font-medium mt-2 tracking-[0.2em] uppercase font-sans text-center">Botanical & Accessory</p>
                         
-                        <div class="flex items-center gap-3 mt-5 opacity-80">
-                            <!-- IG 連結：改用 Inline SVG 確保100%顯示 -->
-                            <a href="https://www.instagram.com/meiyang.16888" target="_blank" class="p-2 border border-wood-medium/30 rounded-full hover:bg-wood-accent/20 hover:text-wood-accent hover:border-wood-accent/50 transition-colors text-wood-medium">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                        <!-- 僅保留 IG 圖示並置中 -->
+                        <div class="flex items-center justify-center mt-5 opacity-80">
+                            <a href="https://www.instagram.com/meiyang.16888" target="_blank" class="p-2 border border-wood-medium/30 rounded-full hover:bg-wood-accent/20 hover:text-wood-accent hover:border-wood-accent/50 transition-colors text-wood-medium" title="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
                                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                                </svg>
-                            </a>
-                            <!-- Mail 連結：改用 Inline SVG 確保100%顯示，更新為指定信箱 -->
-                            <a href="mailto:meiyang.16888@gmail.com?subject=合作邀約-（請填入邀約類型）" class="p-2 border border-wood-medium/30 rounded-full hover:bg-wood-moss/20 hover:text-wood-moss hover:border-wood-moss/50 transition-colors text-wood-medium" title="Contact">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
-                                    <rect width="20" height="16" x="2" y="4" rx="2"/>
-                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                                 </svg>
                             </a>
                         </div>
@@ -185,45 +178,32 @@
                         </div>
                     </div>
 
-                    <!-- 03. 服務專區 -->
-                    <div class="grid grid-cols-2 gap-3 mt-4">
-                        
-                        <!-- 按鈕 1: 客製化訂製 -->
-                        <a href="https://www.instagram.com/meiyang.16888" target="_blank" class="group block cursor-pointer border border-wood-accent/20 bg-wood-hover/50 hover:bg-white hover:border-wood-accent/50 hover:shadow-card p-3 rounded-sm transition-all duration-300 relative overflow-hidden text-center md:text-left">
-                            <div class="absolute right-0 top-0 w-8 h-8 bg-wood-accent/5 rounded-bl-full transition-transform group-hover:scale-150"></div>
+                    <!-- 03. 服務專區：整合為單一 IG 聯繫區塊 -->
+                    <div class="mt-4">
+                        <a href="https://www.instagram.com/meiyang.16888" target="_blank" class="group block cursor-pointer border border-wood-accent/20 bg-wood-hover/40 hover:bg-white hover:border-wood-accent/50 hover:shadow-card p-4 rounded-sm transition-all duration-300 relative overflow-hidden text-center md:text-left">
+                            <div class="absolute right-0 top-0 w-16 h-16 bg-wood-accent/5 rounded-bl-full transition-transform duration-500 group-hover:scale-[2]"></div>
                             <div class="flex flex-col items-center md:items-start justify-center h-full">
-                                <div class="flex items-center gap-2 mb-1.5 text-wood-accent relative z-10">
-                                    <i data-lucide="sparkles" class="w-3.5 h-3.5 group-hover:rotate-12 transition-transform"></i>
-                                    <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-accent transition-colors">客製化訂製</h5>
+                                <div class="flex items-center gap-2 mb-2 text-wood-accent relative z-10">
+                                    <!-- 使用 Inline SVG 確保圖示顯示 -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 group-hover:scale-110 group-hover:rotate-6 transition-transform">
+                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                                    </svg>
+                                    <h5 class="text-[12px] md:text-[13px] font-bold tracking-wider text-wood-dark group-hover:text-wood-accent transition-colors">客製化訂製 ＆ 合作邀約</h5>
                                 </div>
-                                <p class="text-[10px] text-wood-medium/90 leading-relaxed group-hover:text-wood-dark/90 relative z-10">
-                                    量身打造專屬色系與款式<br>
-                                    <span class="underline decoration-wood-accent/40 underline-offset-2 mt-1 inline-block">前往 IG 私訊討論 <i data-lucide="arrow-up-right" class="inline w-2.5 h-2.5 mb-0.5"></i></span>
+                                <p class="text-[11px] md:text-[12px] text-wood-medium/90 leading-relaxed group-hover:text-wood-dark/90 relative z-10 font-sans">
+                                    量身打造專屬款式，或各類商業合作與寄售<br>
+                                    <span class="text-wood-accent/80 font-medium underline decoration-wood-accent/30 underline-offset-4 mt-2 inline-block">前往 IG 私訊聊聊 <i data-lucide="arrow-up-right" class="inline w-3 h-3 mb-0.5"></i></span>
                                 </p>
                             </div>
                         </a>
-
-                        <!-- 按鈕 2: 合作邀約 (已更新信箱) -->
-                        <a href="mailto:meiyang.16888@gmail.com?subject=合作邀約-（請填入邀約類型）" class="group block cursor-pointer border border-wood-moss/20 bg-wood-hover/50 hover:bg-white hover:border-wood-moss/50 hover:shadow-card p-3 rounded-sm transition-all duration-300 relative overflow-hidden text-center md:text-left">
-                            <div class="absolute right-0 top-0 w-8 h-8 bg-wood-moss/5 rounded-bl-full transition-transform group-hover:scale-150"></div>
-                            <div class="flex flex-col items-center md:items-start justify-center h-full">
-                                <div class="flex items-center gap-2 mb-1.5 text-wood-moss relative z-10">
-                                    <i data-lucide="mail-open" class="w-3.5 h-3.5 group-hover:scale-110 transition-transform"></i>
-                                    <h5 class="text-[11px] font-bold tracking-wider text-wood-dark group-hover:text-wood-moss transition-colors">合作邀約</h5>
-                                </div>
-                                <p class="text-[10px] text-wood-medium/90 leading-relaxed group-hover:text-wood-dark/90 relative z-10">
-                                    歡迎商業合作與寄售<br>
-                                    <span class="underline decoration-wood-moss/40 underline-offset-2 mt-1 inline-block">寫信聯繫我們 <i data-lucide="arrow-right" class="inline w-2.5 h-2.5 mb-0.5"></i></span>
-                                </p>
-                            </div>
-                        </a>
-
                     </div>
 
                 </section>
 
                 <!-- 04. 精選作品 -->
-                <section class="w-full mt-auto pt-5 border-t border-wood-line/50">
+                <section class="w-full mt-auto pt-6 border-t border-wood-line/50">
                     <div class="flex items-center gap-3 mb-2 justify-center opacity-80">
                         <div class="h-[1px] w-8 bg-wood-line"></div>
                         <span class="text-[10px] tracking-[0.2em] text-wood-accent font-bold uppercase">Selected Works</span>
